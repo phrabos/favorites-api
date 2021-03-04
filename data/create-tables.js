@@ -25,7 +25,15 @@ async function run() {
                     title VARCHAR(512) NOT NULL,
                     url VARCHAR(512) NOT NULL,
                     owner_id INTEGER NOT NULL REFERENCES users(id)
-            );
+                );
+                CREATE TABLE images (
+                    id SERIAL PRIMARY KEY NOT NULL,
+                    date VARCHAR(512) NOT NULL,
+                    explanation VARCHAR(1500) NOT NULL,
+                    media_type VARCHAR(512) NOT NULL,
+                    title VARCHAR(512) NOT NULL,
+                    url VARCHAR(512) NOT NULL
+                );
         `);
 
     console.log('create tables complete', getEmoji(), getEmoji(), getEmoji());

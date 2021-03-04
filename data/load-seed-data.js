@@ -33,6 +33,16 @@ async function run() {
         [favorite.date, favorite.explanation, favorite.media_type, favorite.title, favorite.url, user.id]);
       })
     );
+
+    await Promise.all(
+      favorites.map(favorite => {
+        return client.query(`
+                    INSERT INTO images (date, explanation, media_type, title, url)
+                    VALUES ($1, $2, $3, $4, $5);
+                `,
+        [favorite.date, favorite.explanation, favorite.media_type, favorite.title, favorite.url]);
+      })
+    );
     
 
     console.log('seed data load complete', getEmoji(), getEmoji(), getEmoji());
